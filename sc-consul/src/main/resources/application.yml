@@ -1,0 +1,22 @@
+spring:
+   application:
+      name: MyConsulApp
+   config:
+      import: 'consul:'
+   cloud:
+      consul:
+         discovery:
+            instanceId: ${spring.application.name}:${random.value}
+            #healthCheckPath: /actuator/health
+            healthCheckPath: /health-check
+            healthCheckInterval: 20s
+            prefer-ip-address: true
+            ip-address: 127.0.0.1
+            health-check-critical-timeout: 1m
+         config:
+            format: yaml
+            #prefix: config
+            #name: ${spring.application.name}
+            #data-key: data
+            #default-context: application
+            #enabled: true

@@ -1,0 +1,16 @@
+server.port: 0
+spring:
+   application:
+      name: MyConfigApp
+   config:
+      import: "consul:"
+   cloud:
+      consul:
+         discovery:
+            instanceId: ${spring.application.name}:${random.value}
+            #healthCheckPath: /actuator/health
+            healthCheckPath: /health-check
+            healthCheckInterval: 20s
+            prefer-ip-address: true
+            ip-address: 127.0.0.1
+            health-check-critical-timeout: 1m
