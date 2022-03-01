@@ -55,7 +55,7 @@
 		<module>ss-consul</module>
 		<module>sc-consul</module>
 		<module>sc-gateway</module>
-		<module>sc-common</module>
-		<module>sc-common-starter</module>
+		<module>sc-common-spring-boot-autoconfigure</module>
+		<module>sc-common-spring-boot-starter</module>
 	</modules>
 </project>
