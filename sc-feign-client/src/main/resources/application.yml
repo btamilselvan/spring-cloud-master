@@ -1,0 +1,35 @@
+#server.port: 0
+spring:
+   application:
+      name: MyOpenFeignApp
+   security:
+      user:
+         name: app
+         password: AppD
+   config:
+      import: 'consul:'
+   cloud:
+      consul:
+         discovery:
+            instanceId: ${spring.application.name}:${random.value}
+#healthCheckPath: /actuator/health
+            healthCheckPath: /health-check
+            healthCheckInterval: 20s
+            prefer-ip-address: true
+            ip-address: 127.0.0.1
+            health-check-critical-timeout: 1m
+feign:
+   circuitbreaker:
+      enabled: true
+   client:
+      config:
+         default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+         MyConfigApp:
+            connectTimeout: 2000
+            readTimeout: 2000
+            loggerLevel: FULL
+logging.level:
+   com.success.clients.ConfigClient: DEBUG

@@ -64,5 +64,6 @@
 		<module>sc-gateway</module>
 		<module>sc-common-spring-boot-autoconfigure</module>
 		<module>sc-common-spring-boot-starter</module>
+		<module>sc-feign-client</module>
 	</modules>
 </project>
