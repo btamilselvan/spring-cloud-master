@@ -23,7 +23,7 @@ public class SCConsulSpringApplication {
     SpringApplication.run(SCConsulSpringApplication.class, args);
   }
   
-  @Value("${xyz}")
+  @Value("${xyz: testing}")
   private String myProp;
 
   @GetMapping("/")

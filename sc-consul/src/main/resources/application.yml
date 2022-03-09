@@ -1,3 +1,4 @@
+server.port: 0
 spring:
    application:
       name: MyConsulApp
@@ -20,3 +21,18 @@ spring:
             #data-key: data
             #default-context: application
             #enabled: true
+   #boot.admin.client.instance.management-url: /manage
+management:
+   endpoint.restart.enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+      #   base-path: /manage
+      health:
+         show-details: always
+info:
+   app:
+      name: Consul client Application
+      description: Consul application.
+      version: 1.0

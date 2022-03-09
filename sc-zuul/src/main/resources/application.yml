@@ -1,0 +1,12 @@
+spring:
+   application:
+      name: MyZuulService
+eureka:
+   instance:
+      hostname: localhost
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      preferIpAddress: false
+      lease-renewal-interval-in-seconds: 60
+   client:
+      serviceUrl:
+         defaultZone: http://myapp:MyApp@localhost:8761/eureka

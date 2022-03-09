@@ -1,0 +1,27 @@
+server.port: 8082
+spring:
+   application:
+      name: sc-admin
+   security:
+      user:
+         name: admin
+         password: Admin@123
+   cloud:
+      consul:
+         discovery:
+            instanceId: ${spring.application.name}:${random.value}
+            #healthCheckPath: /actuator/health
+            healthCheckPath: /health/check
+            healthCheckInterval: 20s
+            prefer-ip-address: true
+            ip-address: 127.0.0.1
+            health-check-critical-timeout: 1m
+   boot:
+      admin:
+         discovery:
+            ignored-services: consul,${spring.application.name}
+info:
+   app:
+      name: Admin Application
+      description: Admin application for all microservices.
+      version: 1.0
