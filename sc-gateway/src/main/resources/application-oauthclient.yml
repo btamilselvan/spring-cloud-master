@@ -1,0 +1,18 @@
+server.port: 0
+spring:
+   security:
+      oauth2:
+         client:
+            registration:
+               my-keycloak:
+                  provider: keycloak
+                  grant_type: client_credentials
+                  client-id: microclient1
+                  client-secret: 4b790cd5-7b42-4829-8949-9f0ff62df1b2
+                  scope:
+                  - email
+                  - profile
+                  - roles
+            provider:
+               keycloak:
+                  issuer-uri: http://localhost:8180/auth/realms/micro
