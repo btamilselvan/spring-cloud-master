@@ -77,5 +77,6 @@
 		<module>sc-eureka-client</module>
 		<module>sc-zuul</module>
 		<module>sc-admin</module>
+		<module>sc-cloud-aws</module>
 	</modules>
 </project>

@@ -1,0 +1,51 @@
+spring:
+   profiles:
+      active: rds
+   application:
+      name: springboot-cloud-aws
+server:
+   port: 8080
+logging:
+   level:
+      #disable logs produced when checking if application runs in AWS cloud environment
+      com.amazonaws.util.EC2MetadataUtils: error
+      com.amazonaws.internal.InstanceMetadataServiceResourceFetcher: error
+      io.awspring.cloud.paramstore.AwsParamStorePropertySource: debug
+---
+spring:
+   config:
+      activate:
+         on-profile: custom
+app:
+   datasource:
+      primary:
+         username: ${mysql.username}
+         password: ${mysql.password}
+         jdbcUrl: jdbc:mysql://localhost:3306/oster_recipe_data
+      replica:
+         username: ${mysql.username}
+         password: ${mysql.password}
+         jdbcUrl: ${mysql.url}
+---
+spring:
+   config:
+      activate:
+         on-profile: rds
+      import: 'optional:aws-parameterstore:'
+#Configure a datasource name 'myosterencrypteddb'
+cloud:
+   aws:
+      rds:
+         instances[0]:
+            dbInstanceIdentifier: ${mysql.dbInstanceIdentifier}
+            username: ${mysql.username}
+            password: ${mysql.password}
+            readReplicaSupport: "true"
+            databaseName: ${mysql.databaseName}
+      #credentials:
+      #   accessKey: XXXX
+      #   secretKey: YYYYYYY
+      region:
+         static: us-east-1
+      stack:
+         auto: "false"
