@@ -1,6 +1,6 @@
 spring:
    profiles:
-      active: rds
+      active: s3
    application:
       name: springboot-cloud-aws
 server:
@@ -45,6 +45,22 @@ cloud:
       #credentials:
       #   accessKey: XXXX
       #   secretKey: YYYYYYY
+      region:
+         static: us-east-1
+      stack:
+         auto: "false"
+---
+spring:
+   datasource:
+      url: jdbc:mysql://localhost:3306/oster_recipe_data
+      username: ${mysql.username}
+      password: ${mysql.password} 
+   config:
+      activate:
+         on-profile: s3
+      import: 'optional:aws-parameterstore:'
+cloud:
+   aws:
       region:
          static: us-east-1
       stack:
