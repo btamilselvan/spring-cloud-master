@@ -1,6 +1,8 @@
 ### References
 - https://docs.awspring.io/spring-cloud-aws/docs/2.4.0/reference/html/index.html#configuration-properties
 - https://github.com/awspring/spring-cloud-aws
+- https://awspring.io/learn/introduction/
+
 
 #### Notes
 - Using minimal configuration SpringBoot, Spring Cloud AWS can be integrated in an application.

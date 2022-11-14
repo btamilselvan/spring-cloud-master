@@ -95,5 +95,6 @@
 		<module>sc-admin</module>
 		<module>sc-cloud-aws</module>
 		<module>sc-cloud-function</module>
+		<module>sc-boot-rest-lambda</module>
 	</modules>
 </project>
