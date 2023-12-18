@@ -1,0 +1,10 @@
+spring:
+ #This is not required if we are using secrets manager only for database credentials
+ config.import: aws-secretsmanager:dev/ordering/
+ datasource:
+  #It is the AWS Secrets Manager Driver driver which wraps the original driver (for instance com.mysql.cj.jdbc.Driver).
+  driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMariaDBDriver
+  # URL has a prefix jdbc-secretsmanager instead of just jdbc as usual
+  url: jdbc-secretsmanager:mariadb://yumitos-dev.cawewb17ryqw.us-east-1.rds.amazonaws.com:3306/yumitos_dev1
+  #Secret Name which we’ve got in AWS Secrets Manager
+  username: dev/secret/
